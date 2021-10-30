@@ -6,7 +6,6 @@
         <Description xml:space="preserve">The fastest and easiest way to add new files to any project - including files that start with a dot</Description>
         <MoreInfo>https://marketplace.visualstudio.com/items?itemName=MadsKristensen.AddNewFile</MoreInfo>
         <License>Resources\LICENSE</License>
-        <ReleaseNotes>https://github.com/madskristensen/AddAnyFile/blob/master/CHANGELOG.md</ReleaseNotes>
         <Icon>Resources\logo.png</Icon>
         <PreviewImage>Resources\logo.png</PreviewImage>
         <Tags>file, add, template</Tags>
