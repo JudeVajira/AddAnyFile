@@ -1,0 +1,9 @@
+﻿namespace {namespace};
+
+public class {itemname} : BaseRequestHandler<{requesttypename}>
+{
+    public override async Task<BaseResponse> HandleAsync({requesttypename} request, CancellationToken cancellationToken)
+    {
+        throw new NotImplementedException();$
+    }
+}

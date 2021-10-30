@@ -1,0 +1,12 @@
+﻿using Base = {handlerbasenamespace};
+
+namespace {namespace};
+
+public partial class {itemname}
+{
+    [HttpGet]
+    public Task<BaseResponse> Index()
+    {
+        throw new NotImplementedException();$
+    }
+}
