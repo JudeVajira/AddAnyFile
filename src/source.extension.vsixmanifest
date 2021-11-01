@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
     <Metadata>
-        <Identity Id="d48e8f25-661b-4970-8b66-03f051ba5fc3" Version="4.0" Language="en-US" Publisher="Mads Kristensen" />
-        <DisplayName>Add New File (64-bit)</DisplayName>
+        <Identity Id="7bf9a1b6-a1b0-4cc6-acad-684e0553d01b" Version="4.0.1" Language="en-US" Publisher="Jude Vajira" />
+        <DisplayName>Add New File Plus (64-bit)</DisplayName>
         <Description xml:space="preserve">The fastest and easiest way to add new files to any project - including files that start with a dot</Description>
-        <MoreInfo>https://marketplace.visualstudio.com/items?itemName=MadsKristensen.AddNewFile</MoreInfo>
+        <MoreInfo>https://marketplace.visualstudio.com/items?itemName=JudeVajira.AddNewFilePlus</MoreInfo>
         <License>Resources\LICENSE</License>
         <Icon>Resources\logo.png</Icon>
         <PreviewImage>Resources\logo.png</PreviewImage>
