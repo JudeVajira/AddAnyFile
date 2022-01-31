@@ -2,7 +2,7 @@
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
     <Metadata>
         <Identity Id="7bf9a1b6-a1b0-4cc6-acad-684e0553d01b" Version="4.0.1" Language="en-US" Publisher="Jude Vajira" />
-        <DisplayName>Add New File Plus (64-bit)</DisplayName>
+        <DisplayName>Add New File Plus (64-bit) - Jude Edition</DisplayName>
         <Description xml:space="preserve">The fastest and easiest way to add new files to any project - including files that start with a dot</Description>
         <MoreInfo>https://marketplace.visualstudio.com/items?itemName=JudeVajira.AddNewFilePlus</MoreInfo>
         <License>Resources\LICENSE</License>
