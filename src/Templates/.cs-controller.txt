@@ -1,6 +1,7 @@
 ﻿using Base = {handlerbasenamespace};
 
 namespace {namespace};
+
 {apiversionattribute}
 public class {itemname} : BaseApiController
 {
