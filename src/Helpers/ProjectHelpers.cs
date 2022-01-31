@@ -1,5 +1,4 @@
 ﻿using EnvDTE;
-
 using EnvDTE80;
 
 using Microsoft;
@@ -117,6 +116,7 @@ namespace MadsKristensen.AddAnyFile
 
 		public static ProjectItem AddFileToProject(this Project project, FileInfo file, string itemType = null)
 		{
+			ThreadHelper.ThrowIfNotOnUIThread();
 			if (project.IsKind(ProjectTypes.ASPNET_5, ProjectTypes.SSDT))
 			{
 				return _dte.Solution.FindProjectItem(file.FullName);
@@ -129,8 +129,50 @@ namespace MadsKristensen.AddAnyFile
 				return null;
 			}
 
-			ProjectItem item = project.ProjectItems.AddFromFile(file.FullName);
+			// Appears to be a bug in project system or VS, so need to make sure the project is aware of the folder structure first,
+			// then add the time to that folderStructure (create and/or find)
+			// if adding to the root ProjectItem then just do that.
+			ProjectItems projectItems;
+			if (string.Equals(root.TrimEnd(Path.DirectorySeparatorChar), file.DirectoryName, StringComparison.InvariantCultureIgnoreCase))
+			{
+				projectItems = project.ProjectItems;
+			}
+			else
+			{
+				projectItems = AddFolders(project, file.DirectoryName).ProjectItems;
+			}
+
+			ProjectItem item = projectItems.AddFromTemplate(file.FullName, file.Name);
 			item.SetItemType(itemType);
+
+			return item;
+		}
+
+		public static ProjectItem AddFolders(Project project, string targetFolder)
+		{
+			ThreadHelper.ThrowIfNotOnUIThread();
+
+			List<string> list = new List<string>();
+			DirectoryInfo root = new DirectoryInfo(project.GetRootFolder());
+			DirectoryInfo target = new DirectoryInfo(targetFolder);
+
+			while (!target.FullName.Equals(root.FullName.TrimEnd(Path.DirectorySeparatorChar), StringComparison.OrdinalIgnoreCase))
+			{
+				list.Add(target.Name);
+				target = target.Parent;
+			}
+
+			list.Reverse();
+
+			ProjectItem existing = project.ProjectItems.Cast<ProjectItem>().FirstOrDefault(i => i.Name.Equals(list.First(), StringComparison.OrdinalIgnoreCase));
+			ProjectItem item = existing ?? project.ProjectItems.AddFolder(list.First());
+
+			foreach (string folder in list.Skip(1))
+			{
+				existing = item.ProjectItems.Cast<ProjectItem>().FirstOrDefault(i => i.Name.Equals(folder, StringComparison.OrdinalIgnoreCase));
+				item = existing ?? item.ProjectItems.AddFolder(folder);
+			}
+
 			return item;
 		}
 
